@@ -1,0 +1,3 @@
+chatbot.k8s-demo.de {
+    reverse_proxy fastapi:8000
+}

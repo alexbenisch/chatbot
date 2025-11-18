@@ -40,8 +40,8 @@ services:
       dockerfile: Dockerfile
     container_name: fastapi
     restart: unless-stopped
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       - OLLAMA_HOST=http://ollama:11434
@@ -55,6 +55,22 @@ services:
       ollama:
         condition: service_healthy
 
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - fastapi
+
 volumes:
   ollama_data:
   postgres_data:
+  caddy_data:
+  caddy_config:
