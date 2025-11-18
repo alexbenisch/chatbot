@@ -1,0 +1,11 @@
+# SOPS configuration file
+# Generate an age key with: age-keygen -o keys.txt
+# Set environment variable: export SOPS_AGE_KEY_FILE=/path/to/keys.txt
+
+creation_rules:
+  - path_regex: deploy/secrets\.enc\.yaml$
+    age: age14sld8g4w55d8elus7jk3wq6wup0276d7lsafxnrr630au9gh9y7s79ydvr
+
+  # Alternative: Use GPG
+  # - path_regex: deploy/secrets\.enc\.yaml$
+  #   pgp: 'YOUR_GPG_KEY_FINGERPRINT'

@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/*.tfplan
+terraform/.terraform.lock.hcl
+
+# SOPS
+*.dec.yaml
+deploy/secrets.yaml
