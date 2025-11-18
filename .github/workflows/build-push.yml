@@ -60,7 +60,6 @@ jobs:
             cd /opt/chatbot
             git pull origin main
 
-            # Create .env from GitHub secrets
             cat > docker/.env << EOF
             POSTGRES_USER=${POSTGRES_USER}
             POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -71,7 +70,8 @@ jobs:
             AUTH_PASSWORD=${AUTH_PASSWORD}
             EOF
 
-            # Pull and restart services
+            sed -i 's/^[[:space:]]*//' docker/.env
+
             cd docker
             docker-compose pull
             docker-compose up -d
