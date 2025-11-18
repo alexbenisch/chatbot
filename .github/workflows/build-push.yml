@@ -73,6 +73,7 @@ jobs:
             sed -i 's/^[[:space:]]*//' docker/.env
 
             cd docker
+            docker-compose down
             docker-compose pull
             docker-compose up -d
         env:
