@@ -40,11 +40,6 @@ variable "ssh_public_key" {
   default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmm9jDoXxpMFSGUYFUCk56TaPPTxMRdgnTY9FCBwjF3 alex@tpad"
 }
 
-variable "server_ip" {
-  description = "Pre-created primary IP address"
-  type        = string
-}
-
 variable "server_domain" {
   description = "Server domain name"
   type        = string

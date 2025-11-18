@@ -2,10 +2,6 @@ data "hcloud_ssh_key" "default" {
   name = var.ssh_key_name
 }
 
-data "hcloud_floating_ip" "main" {
-  ip_address = var.server_ip
-}
-
 resource "hcloud_server" "chatbot" {
   name        = var.server_name
   server_type = var.server_type
@@ -34,11 +30,6 @@ resource "hcloud_server" "chatbot" {
       - systemctl start docker
       - usermod -aG docker root
   EOF
-}
-
-resource "hcloud_floating_ip_assignment" "main" {
-  floating_ip_id = data.hcloud_floating_ip.main.id
-  server_id      = hcloud_server.chatbot.id
 }
 
 resource "hcloud_firewall" "chatbot" {
