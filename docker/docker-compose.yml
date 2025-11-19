@@ -55,6 +55,17 @@ services:
       ollama:
         condition: service_healthy
 
+  chat-ui:
+    build:
+      context: ../chat-ui
+      dockerfile: Dockerfile
+    container_name: chat-ui
+    restart: unless-stopped
+    expose:
+      - "3000"
+    depends_on:
+      - fastapi
+
   caddy:
     image: caddy:2-alpine
     container_name: caddy
@@ -68,6 +79,7 @@ services:
       - caddy_config:/config
     depends_on:
       - fastapi
+      - chat-ui
 
 volumes:
   ollama_data:

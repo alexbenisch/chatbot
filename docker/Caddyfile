@@ -1,3 +1,7 @@
 chatbot.k8s-demo.de {
     reverse_proxy fastapi:8000
 }
+
+chat.k8s-demo.de {
+    reverse_proxy chat-ui:3000
+}

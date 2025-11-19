@@ -6,6 +6,7 @@ on:
     paths:
       - 'app/**'
       - 'docker/**'
+      - 'chat-ui/**'
       - '.github/workflows/build-push.yml'
   workflow_dispatch:
 
